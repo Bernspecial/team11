@@ -31,13 +31,13 @@ export function getParams(param) {
   return product;
 }
 
-// export function renderListWithTemplate(templateFn, parentElement, products, position = "afterbegin", clear = false) {
-//   if (clear){
-//     parentElement.innerHTML = "";
-//   }
-//   const htmlStrings = products.map(templateFn);
-//   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
-// }
+export function renderListWithTemplate(templateFn, parentElement, products, position = "afterbegin", clear = false) {
+  if (clear){
+    parentElement.innerHTML = "";
+  }
+  const htmlStrings = products.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
 
 export function renderWithTemplate(template, parent, data, callback) {
   parent.insertAdjacentHTML("afterbegin", template);
