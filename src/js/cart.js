@@ -4,7 +4,23 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  // Calculate the total cost
+  let total = 0;
+  cartItems.forEach((item) => {
+    total += item.FinalPrice;
+  });
+
+  // Show the .cart-footer element
+  document.querySelector('.cart-footer').classList.remove('hide');
+
+  // Create HTML to display the total cost
+  const totalHtml = `<p class="cart-total">Total: $${total}</p>`;
+  // Insert the total HTML into the .cart-footer element
+  document.querySelector('.cart-footer').innerHTML = totalHtml;
 }
+
+
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
