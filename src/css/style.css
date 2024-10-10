@@ -241,7 +241,7 @@ button {
 }
 
 #checkout-form button[type="submit"] {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -288,5 +288,3 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
-
-
