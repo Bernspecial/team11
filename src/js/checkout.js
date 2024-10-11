@@ -9,11 +9,13 @@ myCheckout.init();
 
 document
   .querySelector("#zip-code")
-  .addEventListener("blur", myCheckout.calculateOrdertotal.bind(myCheckout));
+  .addEventListener("blur", myCheckout.calculateOrderTotal.bind(myCheckout));
 
 // listening for click on the button
 document.querySelector("#checkout-button").addEventListener("click", (e) => {
   e.preventDefault();
-
-  myCheckout.checkout();
+  const myForm = document.forms[0];
+  const chk_status = myForm.checkValidity();
+  myForm.reportValidity();
+  if (chk_status) myCheckout.checkout();
 });
