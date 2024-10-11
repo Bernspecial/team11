@@ -7,5 +7,5 @@ const cart = new ShoppingCart("so-cart", ".product-list");
 cart.init();
 
 if (cart.total > 0) {
-  document.querySelector(".list-footer").classList.remove("hide");
+  document.querySelector("cart-footer").classList.remove("hide");
 }

@@ -70,6 +70,6 @@ export default class ShoppingCart {
     const cartItems = getLocalStorage(this.key);
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
-    document.querySelector(".list-total").innerText += ` $${this.total}`;
+    document.querySelector(".cart-total").innerText += ` $${this.total}`;
   }
 }
