@@ -7,8 +7,9 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
-  const p = JSON.parse(localStorage.getItem(key));
-  return [p]
+  // return JSON.parse(localStorage.getItem(key));
+  const storedValue = localStorage.getItem(key);
+  return storedValue ? JSON.parse(storedValue) : [];
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
@@ -32,7 +33,7 @@ export function getParams(param) {
 }
 
 export function renderListWithTemplate(templateFn, parentElement, products, position = "afterbegin", clear = false) {
-  if (clear){
+  if (clear) {
     parentElement.innerHTML = "";
   }
   const htmlStrings = products.map(templateFn);
@@ -58,8 +59,8 @@ export async function loadHeaderFooter() {
   const footerTemplate = await loadTemplate("../partials/footer.html");
 
   // Get the header and footer elements
-  const headerElement = document.querySelector("header");
-  const footerElement = document.querySelector("footer");
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
 
   // Render the header and footer
 
@@ -73,3 +74,25 @@ export async function loadHeaderFooter() {
   //   console.log('Footer rendered');
   // });
 }
+
+export function alertMessage(message, scroll = true, duration = 3000) {
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+  alert.innerHTML = `<p>${message}</p><span>X</span>`;
+
+  alert.addEventListener("click", function (e) {
+    if (e.target.tagName == "SPAN") {
+      main.removeChild(this);
+    }
+  });
+  const main = document.querySelector("main");
+  main.prepend(alert);
+
+  if (scroll) window.scrollTo(0, 0);
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
+;
