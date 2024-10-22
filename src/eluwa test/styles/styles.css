@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+body {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	font-family: "Poppins", sans-serif;
+	background-color: #f0f0f0;
+	perspective: 1000px; /*here we are adding perspective for 3D effect */
+}
+
+.change {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.box {
+	margin: 0;
+	border: 2px solid rgba(0, 0, 0, 0.2);
+	padding: 1rem;
+	width: 120px;
+	height: 90px;
+	border-radius: 1rem;
+	background-color: #ffb74d;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #333;
+	text-align: center;
+	animation: myanima 6s infinite ease-in-out;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease, background-color 0.3s ease;
+	transform-style: preserve-3d; /* this one makes sure the box flips in 3D */
+}
+
+@keyframes myanima {
+	0% {
+		transform: translateY(0) rotateY(0deg) rotateX(0deg);
+		background-color: #ffb74d;
+	}
+	20% {
+		transform: translateX(-120px) translateY(-120px) rotateY(180deg); /* here we Flip on Y-axis */
+		background-color: #ff8f00;
+		color: #fff;
+	}
+	40% {
+		transform: translateX(240px) translateY(-120px) rotateX(180deg); /* here we Flip on X-axis */
+		background-color: #d84315;
+		color: #fff;
+	}
+	60% {
+		transform: translateX(-240px) translateY(120px) rotateY(360deg); /*here we complete the Y-axis flip */
+		background-color: #6d4c41;
+		color: #fff;
+	}
+	80% {
+		transform: translateX(240px) translateY(120px) rotateX(360deg); /* here we complete the X-axis flip */
+		background-color: #ffb74d;
+		color: #333;
+	}
+	100% {
+		transform: translateY(0) rotateY(0deg) rotateX(0deg); /* Reset */
+		background-color: #ffb74d;
+	}
+}
+
+.box:hover {
+	transform: scale(1.1);
+	background-color: #ff7043;
+}
